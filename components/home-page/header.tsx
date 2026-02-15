@@ -36,8 +36,8 @@ const Header = () => {
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a>
             {isAuthenticated ?
-              <div onClick={()=>router.push('/dashboard')} className="flex justify-center items-center gap-2">
-                <Button>Dashboard</Button>
+              <div className="flex justify-center items-center gap-2">
+                <Button onClick={()=>router.push('/dashboard')} >Dashboard</Button>
                 <UserButton />
               </div> :
               <div className="flex items-center gap-3">

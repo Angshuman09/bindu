@@ -2,6 +2,7 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
+  // user table
 users: defineTable({
     name: v.string(),
     email: v.string(),
@@ -17,6 +18,7 @@ users: defineTable({
   .searchIndex("search_name", {searchField: "name"})
   .searchIndex("search_email",{searchField:"email"}),
 
+  // project table
 projects: defineTable({
   title: v.string(),
   userId: v.id("users"), //foreign key
@@ -29,7 +31,7 @@ projects: defineTable({
   //image pipeline
   originalImageUrl: v.optional(v.string()), // just uploaded image
   currentImageUrl: v.optional(v.string()), // image after transformation
-  thumnailUrl: v.optional(v.string()),
+  thumbnailUrl: v.optional(v.string()),
 
   //imagekit transformation state
   activeTransformations: v.optional(v.string()), //current imagekit Url params
@@ -45,6 +47,7 @@ projects: defineTable({
 .index("by_user_updated", ["userId","updatedAt"])
 .index("by_folder",["folderId"]),
 
+// folders table
 folders: defineTable({
   name: v.string(),
   userId: v.id("users"),
